@@ -36,7 +36,6 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         heading = new javax.swing.JLabel();
-        mvpButton = new javax.swing.JButton();
         mvmButton = new javax.swing.JButton();
         mvperButton = new javax.swing.JButton();
         twmButton = new javax.swing.JButton();
@@ -48,14 +47,6 @@ public class Menu extends javax.swing.JFrame {
         heading.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         heading.setText("TicTacToe");
-
-        mvpButton.setText("Menace Vs Player");
-        mvpButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        mvpButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mvpButtonActionPerformed(evt);
-            }
-        });
 
         mvmButton.setText("Menace Vs Menace");
         mvmButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -107,9 +98,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(96, 96, 96))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mvpButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(heading, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(224, 224, 224))
         );
         layout.setVerticalGroup(
@@ -125,23 +114,11 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(twpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mvperButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(mvpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void mvpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mvpButtonActionPerformed
-//        new GameBoard();
-//        Game.player2 = "human";
-//        Game game = new Game();
-//        game.start();
-//        this.dispose();
-            
-        
-    }//GEN-LAST:event_mvpButtonActionPerformed
 
     private void mvmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mvmButtonActionPerformed
         GameBoard.newObj().initialise();
@@ -181,7 +158,6 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel heading;
     private javax.swing.JButton mvmButton;
-    private javax.swing.JButton mvpButton;
     private javax.swing.JButton mvperButton;
     private javax.swing.JButton twmButton;
     private javax.swing.JButton twpButton;
