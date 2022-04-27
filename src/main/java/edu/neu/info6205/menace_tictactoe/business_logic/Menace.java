@@ -34,8 +34,8 @@ public class Menace {
                         board[temp[0]][temp[1]]=1;
                         gameStats.setBoard(board);
                         menace.addToCurrentGame(1, boardState, board_location);
-                        if(gameStats.isIsTraining()) Thread.sleep(200);
-                        else Thread.sleep(1000);
+                        if(gameStats.isIsTraining()) Thread.sleep(0);
+                        else Thread.sleep(2000);
                         return temp;
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Menace.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,8 +46,8 @@ public class Menace {
                         board[temp[0]][temp[1]]=-1;
                         gameStats.setBoard(board);
                         menace.addToCurrentGame(2, boardState, board_location);
-                        if(gameStats.isIsTraining()) Thread.sleep(200);
-                        else Thread.sleep(1000);
+                        if(gameStats.isIsTraining()) Thread.sleep(0);
+                        else Thread.sleep(2000);
                         return temp;
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Menace.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,13 +4,17 @@ edu/neu/info6205/menace_tictactoe/gui/GameBoard.class
 edu/neu/info6205/menace_tictactoe/business_logic/Perfect.class
 edu/neu/info6205/menace_tictactoe/business_logic/Menace.class
 edu/neu/info6205/menace_tictactoe/business_logic/MenaceData.class
+edu/neu/info6205/menace_tictactoe/Menace1.class
 edu/neu/info6205/menace_tictactoe/gui/GameBoard$1.class
 edu/neu/info6205/menace_tictactoe/Driver.class
 edu/neu/info6205/menace_tictactoe/gui/Menu$3.class
 edu/neu/info6205/menace_tictactoe/gui/Menu$5.class
 edu/neu/info6205/menace_tictactoe/gui/Board.class
+edu/neu/info6205/menace_tictactoe/Menace2.class
 edu/neu/info6205/menace_tictactoe/business_logic/MenaceVsMenace.class
+edu/neu/info6205/menace_tictactoe/Game.class
 edu/neu/info6205/menace_tictactoe/business_logic/WinState.class
+edu/neu/info6205/menace_tictactoe/Optimal.class
 edu/neu/info6205/menace_tictactoe/gui/Menu$4.class
 edu/neu/info6205/menace_tictactoe/gui/Menu.class
 edu/neu/info6205/menace_tictactoe/business_logic/GameStats.class

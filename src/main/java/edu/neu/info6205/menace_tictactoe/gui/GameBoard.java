@@ -4,6 +4,7 @@
  */
 package edu.neu.info6205.menace_tictactoe.gui;
 
+import edu.neu.info6205.menace_tictactoe.Menace1;
 import edu.neu.info6205.menace_tictactoe.business_logic.GameStats;
 import edu.neu.info6205.menace_tictactoe.business_logic.MenaceData;
 import edu.neu.info6205.menace_tictactoe.business_logic.Player;
@@ -17,48 +18,41 @@ import java.util.logging.Logger;
  *
  * @author eswar
  */
-public class GameBoard extends javax.swing.JFrame implements Observer {
+public class GameBoard extends javax.swing.JFrame  {
 
     private Board board;
+    private static GameBoard gameBoard;
 
     /**
      * Creates new form GameBoard
      */
-    public GameBoard(String playerType, boolean isTraining) {
+    public GameBoard() {
 
-        gameStats = GameStats.getObj();
-        if (isTraining) {
-            gameStats.setIterations(20);
-        } else {
-            gameStats.setIterations(1);
-        }
-        gameStats.resetBoard();
-        gameStats.setPlayer2(playerType);
-        gameStats.setIsTraining(isTraining);
-
-        board = Board.getObj();
-        board.reset();
+        
         
         initialise();
+        initialiseScores();
     }
 
     private void addBoard() {
         boardPane.add(board);
     }
 
-    private void initialise() {
+    public void initialise() {
+        board = Board.getObj();
+        board.reset();
         initComponents();
         addBoard();
-        initialiseScores();
+        
         
         this.setVisible(true);
-        gameStats.addObserver(this);
+//        gameStats.addObserver(this);
     }
 
     private void initialiseScores() {
-        winCount.setText(String.valueOf(gameStats.getWins()));
-        drawCount.setText(String.valueOf(gameStats.getDraws()));
-        lossCount.setText(String.valueOf(gameStats.getLooses()));
+        winCount.setText(String.valueOf(Menace1.gamesWon));
+        drawCount.setText(String.valueOf(Menace1.gamesDraw));
+        lossCount.setText(String.valueOf(Menace1.gamesLost));
     }
 
     /**
@@ -77,7 +71,6 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
         drawLabel = new javax.swing.JLabel();
         lossCount = new javax.swing.JLabel();
         lossLabel = new javax.swing.JLabel();
-        menaceStatsLabel = new javax.swing.JLabel();
         boardPane = new javax.swing.JPanel();
         menuButton = new javax.swing.JButton();
 
@@ -88,28 +81,21 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
         heading.setText("Tic Tac Toe");
 
         winCount.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        winCount.setText("0");
 
         winLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         winLabel.setText("Wins");
 
         drawCount.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        drawCount.setText("0");
 
         drawLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         drawLabel.setText("Draws");
 
         lossCount.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lossCount.setText("0");
 
         lossLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lossLabel.setText("Loses");
 
-        menaceStatsLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        menaceStatsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        menaceStatsLabel.setText("Menace Stats");
-
-        boardPane.setLayout(new java.awt.GridLayout());
+        boardPane.setLayout(new java.awt.GridLayout(1, 0));
 
         menuButton.setText("Menu");
         menuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -122,17 +108,8 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(winCount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(drawCount)
-                .addGap(209, 209, 209)
-                .addComponent(lossCount)
-                .addGap(70, 70, 70))
-            .addComponent(menaceStatsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
+                .addContainerGap(141, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(drawLabel)
@@ -141,7 +118,7 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
                         .addGap(55, 55, 55))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(boardPane, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(143, 143, 143))))
+                        .addGap(139, 139, 139))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -153,6 +130,14 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
                             .addComponent(heading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(menuButton))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(winCount)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(drawCount)
+                .addGap(209, 209, 209)
+                .addComponent(lossCount)
+                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +146,9 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
                 .addComponent(menuButton)
                 .addGap(18, 18, 18)
                 .addComponent(heading)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(boardPane, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(menaceStatsLabel)
-                .addGap(41, 41, 41)
+                .addGap(116, 116, 116)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lossCount)
                     .addComponent(drawCount)
@@ -183,7 +166,9 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         new Menu();
+//        Menu.game.stop();
         this.dispose();
+        
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private GameStats gameStats;
@@ -194,53 +179,71 @@ public class GameBoard extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel heading;
     private javax.swing.JLabel lossCount;
     private javax.swing.JLabel lossLabel;
-    private javax.swing.JLabel menaceStatsLabel;
     private javax.swing.JButton menuButton;
     private javax.swing.JLabel winCount;
     private javax.swing.JLabel winLabel;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void update(Observable o, Object arg) {
-        
-            String data = arg.toString();
-            if (null != data) {
-                switch (data) {
-                    case "win" -> {
-                        
-                        winCount.setText(String.valueOf(gameStats.getWins()));
-                        int gameState = 4;
-                        int player = 1;
-                        MenaceData.getObj().addFromCurrentToStore(player, gameState);
-                        board.reset();
-                        
-                    }
-                    case "loss" -> {
-                        
-                        lossCount.setText(String.valueOf(gameStats.getLooses()));
-                        board.reset();
-                        
-                    }
-                    case "draw" -> {
-                        
-                        drawCount.setText(String.valueOf(gameStats.getDraws()));
-                        int gameState = 1;
-                        int player;
-                        if(gameStats.getPlayer2()==Player.MENACE)
-                        {player = 2;
-                        MenaceData.getObj().addFromCurrentToStore(player, gameState);}
-                        player = 1;
-                        MenaceData.getObj().addFromCurrentToStore(player, gameState);
-                        board.reset();
-                        
-                    }
-                    case "board" ->{
-                        board.paintBoard();
-                    }
-                    
-                    
-                }
-            }
-        
+//    @Override
+//    public void update(Observable o, Object arg) {
+//        
+//            String data = arg.toString();
+//            if (null != data) {
+//                switch (data) {
+//                    case "win" -> {
+//                        
+//                        winCount.setText(String.valueOf(gameStats.getWins()));
+//                        int gameState = 4;
+//                        int player = 1;
+//                        MenaceData.getObj().addFromCurrentToStore(player, gameState);
+//                        board.reset();
+//                        
+//                    }
+//                    case "loss" -> {
+//                        
+//                        lossCount.setText(String.valueOf(gameStats.getLooses()));
+//                        board.reset();
+//                        
+//                    }
+//                    case "draw" -> {
+//                        
+//                        drawCount.setText(String.valueOf(gameStats.getDraws()));
+//                        int gameState = 1;
+//                        int player;
+//                        if(gameStats.getPlayer2()==Player.MENACE)
+//                        {player = 2;
+//                        MenaceData.getObj().addFromCurrentToStore(player, gameState);}
+//                        player = 1;
+//                        MenaceData.getObj().addFromCurrentToStore(player, gameState);
+//                        board.reset();
+//                        
+//                    }
+//                    case "board" ->{
+//                        board.paintBoard();
+//                    }
+//                    
+//                    
+//                }
+//            }
+//        
+//    }
+    
+    public static GameBoard getObj(){
+        if(gameBoard == null){
+            gameBoard = new GameBoard();
+        }
+        return gameBoard;
+    }
+    
+    public void updateWinCount(int count){
+        winCount.setText(String.valueOf(count));
+    }
+    
+    public void updateLossCount(int count){
+        lossCount.setText(String.valueOf(count));
+    }
+    
+    public void updateDrawCount(int count){
+        drawCount.setText(String.valueOf(count));
     }
 }

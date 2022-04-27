@@ -4,9 +4,12 @@
  */
 package edu.neu.info6205.menace_tictactoe.gui;
 
+import edu.neu.info6205.menace_tictactoe.Game;
 import edu.neu.info6205.menace_tictactoe.business_logic.MenaceVsMenace;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 /**
  *
@@ -21,6 +24,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
     }
+//    public static Game game;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,38 +134,43 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mvpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mvpButtonActionPerformed
-        new GameBoard("human",false);
-        this.dispose();
+//        new GameBoard();
+//        Game.player2 = "human";
+//        Game game = new Game();
+//        game.start();
+//        this.dispose();
+            
         
     }//GEN-LAST:event_mvpButtonActionPerformed
 
     private void mvmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mvmButtonActionPerformed
-        new GameBoard("menace",false);
-        MenaceVsMenace game= new MenaceVsMenace();
+        GameBoard.getObj().initialise();
+        Game.player2 ="menace";
+        Game game = new Game();
         game.start();
-        
-         
-        
         this.dispose();
     }//GEN-LAST:event_mvmButtonActionPerformed
 
     private void mvperButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mvperButtonActionPerformed
         
-        new GameBoard("perfect",false);
+        GameBoard.getObj().initialise();
+        Game.player2 ="optimal";
+        Game game = new Game();
+        game.start();
         this.dispose();
     }//GEN-LAST:event_mvperButtonActionPerformed
 
     private void twmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twmButtonActionPerformed
-        new GameBoard("menace",true);
-        MenaceVsMenace game= new MenaceVsMenace();
-        game.start();
-        
-        this.dispose();
+//        new GameBoard();
+//        Game
+//        game.start();
+//        
+//        this.dispose();
     }//GEN-LAST:event_twmButtonActionPerformed
 
     private void twpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twpButtonActionPerformed
-        new GameBoard("perfect",true);
-        this.dispose();
+//        new GameBoard("perfect",true);
+//        this.dispose();
     }//GEN-LAST:event_twpButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
