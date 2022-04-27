@@ -24,9 +24,17 @@ public class Optimal {
             for (j = 0; j < BOARD_SIZE; j = j + 1) {
                 if (board[i][j] == EMPTY) {
                     // Try moving here, see its value, then undo move
-                    board[i][j] = whosemove;
-                    value = TicTacMove(board, -whosemove, place);
-                    board[i][j] = EMPTY;
+                    
+                    int[][] temp=new int[3][3];
+                    
+                    for (int t = 0; t < 3; t++) {
+                        for (int s = 0; s < 3; s++) {
+                            temp[t][s] = board[t][s];
+                        }
+                    }
+                    temp[i][j] = whosemove;
+                    value = TicTacMove(temp, -whosemove, place);
+                    temp[i][j] = EMPTY;
 
                     // See if value is better than what we have
                     if ((whosemove < 0 && value < best)

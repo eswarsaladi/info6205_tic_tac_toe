@@ -32,6 +32,7 @@ public class GameBoard extends javax.swing.JFrame  {
         
         initialise();
         initialiseScores();
+        
     }
 
     private void addBoard() {
@@ -231,10 +232,14 @@ public class GameBoard extends javax.swing.JFrame  {
     public static GameBoard getObj(){
         if(gameBoard == null){
             gameBoard = new GameBoard();
+            
         }
         return gameBoard;
     }
-    
+    public static GameBoard newObj(){
+        gameBoard = new GameBoard();
+        return gameBoard;
+    }
     public void updateWinCount(int count){
         winCount.setText(String.valueOf(count));
     }

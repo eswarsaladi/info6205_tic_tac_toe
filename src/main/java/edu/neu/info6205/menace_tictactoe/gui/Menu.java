@@ -144,33 +144,38 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mvpButtonActionPerformed
 
     private void mvmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mvmButtonActionPerformed
-        GameBoard.getObj().initialise();
+        GameBoard.newObj().initialise();
         Game.player2 ="menace";
         Game game = new Game();
+        game.iterationsForMenaceVsMenace=1;
         game.start();
         this.dispose();
     }//GEN-LAST:event_mvmButtonActionPerformed
 
     private void mvperButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mvperButtonActionPerformed
         
-        GameBoard.getObj().initialise();
+        GameBoard.newObj().initialise();
         Game.player2 ="optimal";
         Game game = new Game();
+        game.iterationsForMenaceVsOptimal=1;
         game.start();
         this.dispose();
     }//GEN-LAST:event_mvperButtonActionPerformed
 
     private void twmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twmButtonActionPerformed
-//        new GameBoard();
-//        Game
-//        game.start();
-//        
-//        this.dispose();
+        GameBoard.newObj().initialise();
+        Game.player2 ="menace";
+        Game game = new Game();
+        game.start();
+        this.dispose();
     }//GEN-LAST:event_twmButtonActionPerformed
 
     private void twpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twpButtonActionPerformed
-//        new GameBoard("perfect",true);
-//        this.dispose();
+        GameBoard.newObj().initialise();
+        Game.player2 ="optimal";
+        Game game = new Game();
+        game.start();
+        this.dispose();
     }//GEN-LAST:event_twpButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -8,14 +8,17 @@ public class Menace2 {
     public static int gamesWon;
     public static int gamesLost;
     public static int gamesDraw;
-    public static int winRewards;
-    public static int drawRewards;
-    public static int punishment;
+    public static int winRewards=5;
+    public static int drawRewards=2;
+    public static int punishment=-1;
 
     public static void menace2Play() {
         String boardState = Arrays.deepToString(Game.board);
         Random rand = new Random();
         matchBoxes.putIfAbsent(boardState, new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9)));
+        if(matchBoxes.get(boardState).isEmpty()){
+           matchBoxes.put(boardState,new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9)));
+        }
         int choose_one = rand.nextInt(matchBoxes.get(boardState).size());
         while (true) {
             
@@ -87,6 +90,7 @@ public class Menace2 {
 
             }
         }
+ 
         if (Game.gameState().equals("its a draw")) {
             for (Map.Entry<String, Integer> e : currentGameMoves.entrySet()) {
                 for (int i = 0; i < drawRewards; i++) {

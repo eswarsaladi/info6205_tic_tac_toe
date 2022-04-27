@@ -11,9 +11,12 @@ public class Menace1 {
     public static int gamesWon = 0;
     public static int gamesLost = 0;
     public static int gamesDraw = 0;
-    public static int winRewards;
-    public static int drawRewards;
-    public static int punishment;
+    public static int winRewards=5;
+    public static int winRewardsO=15;
+    public static int drawRewards=2;
+    public static int drawRewardsO=5;
+    public static int punishment=-1;
+    public static int punishmentO=-1;
 
     public static void menace1Play() {
         // create a key for inserting into matchboxes
@@ -27,11 +30,7 @@ public class Menace1 {
             if (Game.board[temp[0]][temp[1]] == 0) {
                 Game.changeBoard(temp[0], temp[1], 1);
                 currentGameMoves.put(boardState, board_location);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Menace1.class.getName()).log(Level.SEVERE, null, ex);
-                }
+              
                 return;
             } else {
                 choose_one = rand.nextInt(matchBoxes.get(boardState).size());
@@ -95,9 +94,29 @@ public class Menace1 {
 
             }
         }
+ 
         if (Game.gameState().equals("its a draw")) {
             for (Map.Entry<String, Integer> e : currentGameMoves.entrySet()) {
                 for (int i = 0; i < drawRewards; i++) {
+                    matchBoxes.get(e.getKey()).add(e.getValue());
+                }
+            }
+        }
+        currentGameMoves.clear();
+    }
+    public static void putDataFromCurrentToMatchBoxesO() {
+        if (Game.gameState().equals("1 has won")) {
+            for (Map.Entry<String, Integer> e : currentGameMoves.entrySet()) {
+                for (int i = 0; i < winRewardsO; i++) {
+                    matchBoxes.get(e.getKey()).add(e.getValue());
+                }
+
+            }
+        }
+
+        if (Game.gameState().equals("its a draw")) {
+            for (Map.Entry<String, Integer> e : currentGameMoves.entrySet()) {
+                for (int i = 0; i < drawRewardsO; i++) {
                     matchBoxes.get(e.getKey()).add(e.getValue());
                 }
             }
