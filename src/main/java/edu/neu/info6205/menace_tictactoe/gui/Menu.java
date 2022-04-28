@@ -143,6 +143,7 @@ public class Menu extends javax.swing.JFrame {
         GameBoard.newObj().initialise();
         Game.player2 ="menace";
         Game game = new Game();
+        game.iterationsForMenaceVsMenace=5000;
         game.start();
         this.dispose();
     }//GEN-LAST:event_twmButtonActionPerformed
@@ -151,6 +152,7 @@ public class Menu extends javax.swing.JFrame {
         GameBoard.newObj().initialise();
         Game.player2 ="optimal";
         Game game = new Game();
+        game.iterationsForMenaceVsOptimal=10000;
         game.start();
         this.dispose();
     }//GEN-LAST:event_twpButtonActionPerformed
