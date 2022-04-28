@@ -1,3 +1,4 @@
+Iteration,wins,loses,draws
 50,3,42,5
 100,5,38,7
 150,4,37,9
